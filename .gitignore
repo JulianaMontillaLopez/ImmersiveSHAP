@@ -1,0 +1,127 @@
+# =====================================================
+# UNITY (works for nested Unity projects)
+# =====================================================
+
+# Generated folders (any depth)
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Mm]emory[Cc]aptures/
+**/[Rr]ecordings/
+**/[Pp]ackage[Cc]ache/
+
+# Unity auto-generated files
+sysinfo.txt
+mono_crash.*
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Builds
+*.apk
+*.aab
+*.app
+*.unitypackage
+
+# Addressables (generated content only)
+**/ServerData/
+**/[Aa]ssets/StreamingAssets/aa*
+**/[Aa]ssets/Addressables_Temp/
+**/[Aa]ssets/AddressableAssetsData/*/*.bin*
+
+# Visual Scripting generated
+**/[Aa]ssets/Unity.VisualScripting.Generated/
+
+# Rider / VS / IDE Unity integration
+*.DotSettings.user
+.vs/
+.consulo/
+ExportedObj/
+
+# =====================================================
+# C# / Visual Studio
+# =====================================================
+
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# =====================================================
+# PYTHON (Server / SHAP side)
+# =====================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# Testing / coverage
+.pytest_cache/
+htmlcov/
+coverage.xml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Caches
+.cache/
+
+# Generated outputs
+outputs/
+generated_plots/
+
+# =====================================================
+# IDEs
+# =====================================================
+
+.vscode/
+.idea/
+
+# =====================================================
+# SYSTEM FILES
+# =====================================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =====================================================
+# SECRETS
+# =====================================================
+
+.env
+*.key
+*.pem
+
+# =====================================================
+# DOCKER
+# =====================================================
+
+*.pid
+*.sock
+*.db
+docker-compose.override.yml

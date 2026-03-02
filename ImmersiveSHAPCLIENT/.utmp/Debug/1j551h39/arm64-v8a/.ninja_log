@@ -1,0 +1,12 @@
+# ninja log v5
+152	1416	7901311682265241	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	17bd7bad48b2d334
+1421	3582	7901311703248630	D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/1j551h39/obj/arm64-v8a/libswappywrapper.so	471de8db62f7d0ee
+60	6920	7901311738288223	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7a8015a6a673bc06
+30	7145	7901311739859443	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	6d1ff95ede4d4dca
+106	7201	7901311741036148	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	abad5bcbbb1b51b5
+125	7236	7901311739763333	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	c97091de3ce79f33
+14	7338	7901311742016774	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	36b1846d711ffe5a
+81	7572	7901311744910747	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	bf50c93113be99a3
+45	7715	7901311746285240	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ac1f03e720d86ec9
+1	7743	7901311746237132	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	105ea067e181f7e3
+7749	8101	7901311750437083	D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/1j551h39/obj/arm64-v8a/libgame.so	140257411b21ed88

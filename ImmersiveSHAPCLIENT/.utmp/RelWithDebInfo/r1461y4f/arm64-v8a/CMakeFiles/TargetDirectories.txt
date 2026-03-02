@@ -1,0 +1,8 @@
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/CMakeFiles/rebuild_cache.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/GameActivity/CMakeFiles/game.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+D:/ImmersiveSHAP/ImmersiveSHAPCLIENT/ImmersiveSHAPClient/.utmp/RelWithDebInfo/r1461y4f/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

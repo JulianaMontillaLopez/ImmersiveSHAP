@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.git/
+.gitignore
+.dockerignore
+.idea/
+.vscode/
+*.ipynb
+*.csv
+*.pkl
+.env
+.DS_Store

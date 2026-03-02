@@ -1,0 +1,33 @@
+#pragma kernel CSMain
+
+RWStructuredBuffer<float> Densities;
+StructuredBuffer<float3> Positions;
+
+float Radius;
+uint PointCount; // Cambiado de int a uint
+
+[numthreads(64, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    uint idx = id.x;
+    if (idx >= PointCount)
+        return;
+
+    float3 currentPos = Positions[idx];
+    float density = 0;
+
+    for (uint i = 0; i < PointCount; ++i) // i ahora es uint
+    {
+        if (i == idx) continue;
+        
+        float3 otherPos = Positions[i];
+        float distance = length(currentPos - otherPos);
+        
+        if (distance <= Radius)
+        {
+            density += 1.0 - smoothstep(0, Radius, distance);
+        }
+    }
+
+    Densities[idx] = density;
+}
