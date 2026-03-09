@@ -1,103 +1,110 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem; // Necesario para detectar el botón Menú
 
 /// <summary>
-/// Controls the loading overlay that shows Python server progress.
-/// Integrado con DeserializationClient y WebSocketClient.
+/// Gestiona la pantalla de carga y el menú oculto activable por botón Menú.
 /// </summary>
 public class ProcessStatusUI : MonoBehaviour
 {
     public static ProcessStatusUI Instance { get; private set; }
 
-    [Header("UI Containers")]
-    public GameObject overlayRoot;        // El panel de carga (bloquea la vista) -> Arrastrar el 'StatusCanvas' o 'LoadingContainer'
-    public GameObject persistentRoot;   // Controles pequeños que quedan visibles tras cargar -> Arrastrar el 'PersistentContainer'
+    [Header("Containers (From Walkthrough)")]
+    public GameObject overlayRoot;        // LoadingContainer
+    public GameObject persistentRoot;     // PersistentContainer
 
-    [Header("Visual Elements")]
+    [Header("Progress Elements")]
     public TextMeshProUGUI statusText;
     public Slider progressBar;
 
     [Header("Buttons")]
-    public Button cancelLoadingButton; // Corresponde a 'CancelBtn'
-    public Button newPlotButton;         // Corresponde a 'NewPlotBtn'
-    public Button exitButton; // Corresponde a 'ExitBtn'
+    public Button cancelLoadingButton;
+    public Button newPlotButton;
+    public Button exitAppButton;
 
+    [Header("Quest 3 Menu Toggle")]
+    [Tooltip("Acción recomendada: <XRController>{LeftHand}/menu")]
+    public InputActionProperty menuToggleAction;
+
+    private bool isPlotActive = false; // Bloquea el menú si no hay gráfico cargado
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
-        // Estado inicial
-        Hide();
-        if (persistentRoot != null) persistentRoot.SetActive(false);
+        HideAll();
 
-        // Setup button listeners
-        if (cancelLoadingButton != null)
-            cancelLoadingButton.onClick.AddListener(OnCancelRequest);
-        if (newPlotButton != null) 
-            newPlotButton.onClick.AddListener(OnNewPlotRequest);
-        if (exitButton != null)
-            exitButton.onClick.AddListener(OnExitRequest);
+        // Configurar botones
+        if (cancelLoadingButton != null) cancelLoadingButton.onClick.AddListener(OnCancelRequest);
+        if (newPlotButton != null) newPlotButton.onClick.AddListener(OnNewPlotRequest);
+        if (exitAppButton != null) exitAppButton.onClick.AddListener(OnExitRequest);
     }
 
-    /// <summary>
-    /// Alias para mostrar la UI con un mensaje específico, requerido por DeserializationClient.
-    /// </summary>
+    private void OnEnable() => menuToggleAction.action?.Enable();
+    private void OnDisable() => menuToggleAction.action?.Disable();
+
+    private void Update()
+    {
+        // Detectar pulsación del botón Menú del Quest 3
+        if (isPlotActive && menuToggleAction.action != null && menuToggleAction.action.WasPressedThisFrame())
+        {
+            ToggleMenu();
+        }
+    }
+
     public void ShowLoading(string message)
     {
-        if (overlayRoot != null && !overlayRoot.activeSelf)
-            overlayRoot.SetActive(true);
-
-        // Al empezar a cargar, ocultamos los controles laterales si existieran
-        if (persistentRoot != null) persistentRoot.SetActive(false);
-
+        isPlotActive = false;
+        overlayRoot.SetActive(true);
+        persistentRoot.SetActive(false);
         UpdateProgress(0, message);
     }
 
     public void UpdateProgress(float percent, string message)
     {
-        // Si recibimos progreso y la UI está apagada, la encendemos
-        if (overlayRoot != null && !overlayRoot.activeSelf)
-            overlayRoot.SetActive(true);
+        if (overlayRoot != null && !overlayRoot.activeSelf) overlayRoot.SetActive(true);
 
         if (progressBar != null) progressBar.value = percent / 100f;
         if (statusText != null) statusText.text = message;
-
-        Debug.Log($"[ProcessStatusUI] {percent}% - {message}");
     }
 
     /// <summary>
-    /// Llamado cuando el gráfico se ha renderizado.
-    /// Oculta el bloqueador de carga y muestra controles de interacción.
+    /// Llamado cuando los datos llegan del servidor.
     /// </summary>
     public void ShowPersistentSideControls()
     {
-        Hide(); // Ocultamos el overlay de carga
-        if (persistentRoot != null)
-            persistentRoot.SetActive(true);
-
-        Debug.Log("[ProcessStatusUI] Plot ready. Showing interaction controls.");
+        isPlotActive = true;
+        overlayRoot.SetActive(false); // Quitamos la pantalla de carga
+        persistentRoot.SetActive(false); // EL MENU QUEDA OCULTO por defecto
+        Debug.Log("[ProcessStatusUI] Gráfico listo. Pulsa el botón MENÚ para ver opciones.");
     }
 
     public void Hide()
     {
-        if (overlayRoot != null) overlayRoot.SetActive(false);
+        overlayRoot.SetActive(false);
+        persistentRoot.SetActive(false);
     }
+
+    private void ToggleMenu()
+    {
+        bool currentState = persistentRoot.activeSelf;
+        persistentRoot.SetActive(!currentState);
+        Debug.Log($"[ProcessStatusUI] Menú {(!currentState ? "Mostrado" : "Oculto")}");
+    }
+
+    private void HideAll() => Hide();
 
     private void OnCancelRequest()
     {
-        UpdateProgress(0, "Cancelling Process...");
-        // Desactivamos el botón para evitar spam
-        if (cancelLoadingButton != null) cancelLoadingButton.interactable = false;
-
         WebSocketClient.Instance.SendCancelSignal();
+        UpdateProgress(0, "Cancelling...");
     }
 
     private void OnNewPlotRequest()
     {
-        // Oculta los controles y vuelve a mostrar el panel de configuración original
+        isPlotActive = false;
         persistentRoot.SetActive(false);
         if (VisualMappingUIManager.Instance != null)
             VisualMappingUIManager.Instance.ShowPanel();
@@ -105,14 +112,7 @@ public class ProcessStatusUI : MonoBehaviour
 
     private void OnExitRequest()
     {
-        Debug.Log("[App] Exit Request. Closing application.");
         WebSocketClient.Instance.SendShutdownSignal();
         Application.Quit();
-    }
-
-    private void OnDestroy()
-    {
-        if (cancelLoadingButton != null) cancelLoadingButton.onClick.RemoveAllListeners();
-        if (exitButton != null) exitButton.onClick.RemoveAllListeners();
     }
 }
