@@ -1,10 +1,10 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem; // Necesario para detectar el botÛn Men˙
+using UnityEngine.InputSystem; // Necesario para detectar el bot√≥n Men√∫
 
 /// <summary>
-/// Gestiona la pantalla de carga y el men˙ oculto activable por botÛn Men˙.
+/// Gestiona la pantalla de carga y el men√∫ oculto activable por bot√≥n Men√∫.
 /// </summary>
 public class ProcessStatusUI : MonoBehaviour
 {
@@ -24,10 +24,10 @@ public class ProcessStatusUI : MonoBehaviour
     public Button exitAppButton;
 
     [Header("Quest 3 Menu Toggle")]
-    [Tooltip("AcciÛn recomendada: <XRController>{LeftHand}/menu")]
+    [Tooltip("Acci√≥n recomendada: <XRController>{LeftHand}/menu")]
     public InputActionProperty menuToggleAction;
 
-    private bool isPlotActive = false; // Bloquea el men˙ si no hay gr·fico cargado
+    private bool isPlotActive = false; // Bloquea el men√∫ si no hay gr√°fico cargado
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public class ProcessStatusUI : MonoBehaviour
 
     private void Update()
     {
-        // Detectar pulsaciÛn del botÛn Men˙ del Quest 3
+        // Detectar pulsaci√≥n del bot√≥n Men√∫ del Quest 3
         if (isPlotActive && menuToggleAction.action != null && menuToggleAction.action.WasPressedThisFrame())
         {
             ToggleMenu();
@@ -78,7 +78,7 @@ public class ProcessStatusUI : MonoBehaviour
         isPlotActive = true;
         overlayRoot.SetActive(false); // Quitamos la pantalla de carga
         persistentRoot.SetActive(false); // EL MENU QUEDA OCULTO por defecto
-        Debug.Log("[ProcessStatusUI] Gr·fico listo. Pulsa el botÛn MEN⁄ para ver opciones.");
+        Debug.Log("[ProcessStatusUI] Gr√°fico listo. Pulsa el bot√≥n MEN√ö para ver opciones.");
     }
 
     public void Hide()
@@ -91,7 +91,7 @@ public class ProcessStatusUI : MonoBehaviour
     {
         bool currentState = persistentRoot.activeSelf;
         persistentRoot.SetActive(!currentState);
-        Debug.Log($"[ProcessStatusUI] Men˙ {(!currentState ? "Mostrado" : "Oculto")}");
+        Debug.Log($"[ProcessStatusUI] Men√∫ {(!currentState ? "Mostrado" : "Oculto")}");
     }
 
     private void HideAll() => Hide();
@@ -104,11 +104,24 @@ public class ProcessStatusUI : MonoBehaviour
 
     private void OnNewPlotRequest()
     {
+        Debug.Log("üîÑ Iniciando flujo de New Plot...");
+
+        // 1. LIMPIAR EL GR√ÅFICO ACTUAL COMPLETAMENTE
+        if (PlotManager.Instance != null)
+        {
+            PlotManager.Instance.ClearCurrentPlot();
+        }
+
+        // 2. CAMBIO DE INTERFAZ
         isPlotActive = false;
-        persistentRoot.SetActive(false);
+        persistentRoot.SetActive(false); // Ocultar el men√∫ de botones
+
         if (VisualMappingUIManager.Instance != null)
-            VisualMappingUIManager.Instance.ShowPanel();
+        {
+            VisualMappingUIManager.Instance.ShowPanel(); // Volver al inicio
+        }
     }
+
 
     private void OnExitRequest()
     {

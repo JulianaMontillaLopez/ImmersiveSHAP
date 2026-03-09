@@ -3,7 +3,6 @@ using UnityEngine;
 
 /// <summary>
 /// Manages graph data points with optimized pooling and VR-friendly metadata.
-/// Optimized to reuse active objects instead of cycles of deactivation/activation.
 /// </summary>
 public class GeometryBuilder : MonoBehaviour
 {
@@ -19,9 +18,7 @@ public class GeometryBuilder : MonoBehaviour
 
     [Header("Appearance (VR-friendly)")]
     [Range(0.005f, 0.10f)]
-    [Tooltip("Proportion of the plot axis size. 0.025 = 2.5% of the axis length (RECOMMENDED).")]
-    public float pointSizeRatio = 0.025f; // 🚀 AUMENTADO: Antes era 0.012, ahora 0.025 (2x más grande)
-
+    public float pointSizeRatio = 0.025f;
 
     private List<GameObject> pooledPoints = new();
     private List<GameObject> activePoints = new();
@@ -44,10 +41,6 @@ public class GeometryBuilder : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Builds points and assigns comprehensive SHAP interpretability metadata.
-    /// This version is OPTIMIZED to reuse currently active points and avoid SetActive cycles.
-    /// </summary>
     public void BuildPoints(
         Vector3[] positions,
         List<float> shapValues,
@@ -71,69 +64,60 @@ public class GeometryBuilder : MonoBehaviour
         int newCount = positions.Length;
         int currentActiveCount = activePoints.Count;
 
-        // 🔄 OPTIMIZACIÓN: Manejo de Delta de objetos
+        // 🔄 MANEJO DE DELTA: Ajustamos lista de activos
         if (newCount < currentActiveCount)
         {
-            // Tenemos más de los que necesitamos: Devolver excedente al pool
             for (int i = currentActiveCount - 1; i >= newCount; i--)
             {
                 var go = activePoints[i];
-                go.SetActive(false);
-                if (usePooling) pooledPoints.Add(go);
+                if (go != null)
+                {
+                    go.SetActive(false);
+                    if (usePooling) pooledPoints.Add(go);
+                }
                 activePoints.RemoveAt(i);
             }
         }
         else if (newCount > currentActiveCount)
         {
-            // Necesitamos más: Sacar del pool los que faltan
             for (int i = currentActiveCount; i < newCount; i++)
             {
                 activePoints.Add(GetOrInstantiatePoint());
             }
         }
 
-        // En este punto, activePoints.Count == newCount.
-        // Ahora solo actualizamos la data sin llamar a SetActive(true) en los que ya estaban.
-
+        // --- Actualización de Data ---
         float axisSize = Mathf.Max(0.1f, scaledMax.x - scaledMin.x);
         float scale = axisSize * pointSizeRatio;
 
         for (int i = 0; i < newCount; i++)
         {
             GameObject pointGO = activePoints[i];
+            if (pointGO == null) continue;
 
-            // 1. Posición y Escala
-            Vector3 targetPos = positions[i];
-            if (clampToBounds)
-                targetPos = Vector3.Max(scaledMin, Vector3.Min(scaledMax, targetPos));
-
-            pointGO.transform.localPosition = targetPos;
+            pointGO.transform.localPosition = positions[i];
             pointGO.transform.localScale = Vector3.one * scale;
 
-            // 2. Asegurar que esté activo (solo si no lo estaba ya)
             if (!pointGO.activeSelf) pointGO.SetActive(true);
 
-            // 3. Metadata (Simplificado: asumiendo que el prefab tiene el componente)
+            // 🚀 MEJORA: Caché de componente para evitar GetComponent repetitivos
             var meta = pointGO.GetComponent<DataPointMeta>();
-            if (meta == null) meta = pointGO.AddComponent<DataPointMeta>();
-
-            meta.index = i;
-            meta.classLabel = classLabel;
-            meta.featureName = xLabel;
-            meta.featureValue = xValues[i];
-            meta.shapValue = shapValues[i];
-            meta.secondaryFeatureName = zLabel;
-            meta.secondaryFeatureValue = zValues[i];
-
-            meta.baseValue = baseValue;
-            meta.finalPrediction = (i < finalPredictions.Count) ? finalPredictions[i] : 0f;
-            meta.impactShare = (i < impactShares.Count) ? impactShares[i] : 0f;
-            meta.quantile = (i < unitQuantiles.Count) ? unitQuantiles[i] : 0.5f;
-
-            meta.increasesPrediction = meta.shapValue > 0f;
+            if (meta != null)
+            {
+                meta.index = i;
+                meta.classLabel = classLabel;
+                meta.featureName = xLabel;
+                meta.featureValue = (i < xValues.Count) ? xValues[i] : 0f;
+                meta.shapValue = (i < shapValues.Count) ? shapValues[i] : 0f;
+                meta.secondaryFeatureName = zLabel;
+                meta.secondaryFeatureValue = (i < zValues.Count) ? zValues[i] : 0f;
+                meta.baseValue = baseValue;
+                meta.finalPrediction = (i < finalPredictions.Count) ? finalPredictions[i] : 0f;
+                meta.impactShare = (i < impactShares.Count) ? impactShares[i] : 0f;
+                meta.quantile = (i < unitQuantiles.Count) ? unitQuantiles[i] : 0.5f;
+                meta.increasesPrediction = meta.shapValue > 0f;
+            }
         }
-
-        Debug.Log($"ImmersiveSHAP, UNITY, [GeometryBuilder] Optimized Render for {newCount} points.");
     }
 
     private GameObject GetOrInstantiatePoint()
@@ -148,15 +132,20 @@ public class GeometryBuilder : MonoBehaviour
         return Instantiate(pointPrefab, pointsParent);
     }
 
-    public List<GameObject> GetActiveInstances() => activePoints;
-
+    /// <summary>
+    /// MEJORADO: Ahora maneja correctamente la limpieza total para "New Plot".
+    /// </summary>
     public void ClearPoints(bool destroy = false)
     {
         for (int i = activePoints.Count - 1; i >= 0; i--)
         {
             var go = activePoints[i];
             if (go == null) continue;
-            if (destroy) Destroy(go);
+
+            if (destroy)
+            {
+                Destroy(go);
+            }
             else
             {
                 go.SetActive(false);
@@ -164,5 +153,17 @@ public class GeometryBuilder : MonoBehaviour
             }
         }
         activePoints.Clear();
+
+        // Si pedimos destrucción total (New Plot), también limpiamos el pool de reserva
+        if (destroy)
+        {
+            foreach (var p in pooledPoints) if (p != null) Destroy(p);
+            pooledPoints.Clear();
+
+            // Si destruimos todo, reiniciamos el pool para la siguiente carga si usePooling es true
+            if (usePooling) InitializePool();
+        }
     }
+
+    public List<GameObject> GetActiveInstances() => activePoints;
 }

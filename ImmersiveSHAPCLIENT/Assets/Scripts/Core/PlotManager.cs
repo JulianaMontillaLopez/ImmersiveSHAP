@@ -136,6 +136,41 @@ public class PlotManager : MonoBehaviour
         Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Render pipeline completed successfully.");
     }
 
+
+
+    /// <summary>
+    /// Elimina el gráfico actual de la vista y resetea los estados internos.
+    /// Invocado desde el botón "New Plot" del menú de pausa.
+    /// </summary>
+    public void ClearCurrentPlot()
+    {
+        Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Solicitud de limpieza total del gráfico.");
+        // 1. Limpieza física de GameObjects (Usando tu lógica de SceneCleaner)
+        SceneCleaner.ClearScene(completelyDestroy: true);
+        // 2. Limpiar buffers de datos para liberar memoria RAM
+        rawPositions = null;
+        filteredPositions = null;
+        scaledPositions = null;
+        currentXValues?.Clear();
+        currentShapValues?.Clear();
+        currentZValues?.Clear();
+        // 3. Ocultar el objeto raíz si es necesario
+        if (plotRoot != null)
+        {
+            // Opcional: Podrías resetear la escala del gráfico si el usuario lo movió/escaló
+            plotRoot.localScale = Vector3.one;
+            // plotRoot.gameObject.SetActive(false); // Descomentar si quieres ocultar el root
+        }
+        // 4. Notificar a otros sistemas si es necesario (ej: ocultar leyendas)
+        if (rendererController != null)
+        {
+            rendererController.DisableRendering();
+        }
+
+    }
+
+
+
     private void OnDisable()
     {
         if (geometryBuilder != null)

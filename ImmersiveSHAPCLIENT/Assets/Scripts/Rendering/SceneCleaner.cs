@@ -1,20 +1,33 @@
 ﻿using UnityEngine;
-/// <summary>
-/// Static utility to clear the visualization from the scene.
-/// Always called before building a new plot to prevent data overlap.
-/// </summary>
+
 public static class SceneCleaner
 {
-    public static void ClearScene()
+    /// <summary>
+    /// Limpia la visualización actual llamando a los submódulos responsables.
+    /// </summary>
+    /// <param name="completelyDestroy">Si es true, borra los objetos. Si es false, los oculta/devuelve al pool.</param>
+    public static void ClearScene(bool completelyDestroy = false)
     {
-        // 1. Use the GeometryBuilder to handle point pooling instead of destruction
+        // 1. Limpiar Puntos de Datos
         var geometryBuilder = Object.FindFirstObjectByType<GeometryBuilder>();
         if (geometryBuilder != null)
-            geometryBuilder.ClearPoints(destroy: false); // ♻️ reuse objects
-        // 2. Clear Axis references
+        {
+            geometryBuilder.ClearPoints(completelyDestroy);
+        }
+
+        // 2. Limpiar Ejes y Referencias
         var axesBuilder = Object.FindFirstObjectByType<AxesAndReferenceBuilder>();
         if (axesBuilder != null)
-            axesBuilder.ClearAxes(destroy: false); // ♻️ deactivate instead of destroy
-        Debug.Log("ImmersiveSHAP, UNITY, 🧹 SceneCleaner: Scene cleared via submodules.");
+        {
+            axesBuilder.ClearAxes(completelyDestroy);
+        }
+
+        // 3. Limpiar Selección Visual (importante para que no queden tooltips huérfanos)
+        if (PointSelection.Instance != null)
+        {
+            PointSelection.Instance.ClearSelection();
+        }
+
+        Debug.Log($"ImmersiveSHAP, UNITY, 🧹 SceneCleaner: Escena limpia (Destruir: {completelyDestroy}).");
     }
 }
