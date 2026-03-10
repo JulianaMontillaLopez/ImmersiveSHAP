@@ -1793,8 +1793,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1237409965}
-  - {fileID: 194968600}
   - {fileID: 2100564092}
+  - {fileID: 1988901606}
   - {fileID: 1107408241}
   - {fileID: 1671629885}
   - {fileID: 1071886524}
@@ -1815,61 +1815,12 @@ MonoBehaviour:
   axesBuilder: {fileID: 2016145035}
   pointFilter: {fileID: 1237409964}
   dataScaler: {fileID: 1237409966}
-  geometryBuilder: {fileID: 194968601}
+  geometryBuilder: {fileID: 1988901607}
   visualEncoder: {fileID: 2100564091}
   layoutManager: {fileID: 1107408242}
   rendererController: {fileID: 1671629886}
   selection: {fileID: 1074396360}
   plotRoot: {fileID: 1071886524}
---- !u!1 &194968599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 194968600}
-  - component: {fileID: 194968601}
-  m_Layer: 0
-  m_Name: GeometryBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &194968600
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194968599}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 179504252}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &194968601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194968599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 539a61d509568ce4b9d1e1f0c821623e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 8976470161085322204, guid: e96c39250055eeb44aaa6b86624ba298, type: 3}
-  initialPoolSize: 2000
-  usePooling: 1
-  pointsParent: {fileID: 40083936}
-  pointSizeRatio: 0.05
 --- !u!1 &196186117
 GameObject:
   m_ObjectHideFlags: 0
@@ -7157,7 +7108,7 @@ MonoBehaviour:
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
-  m_AttachEaseInTime: 0.15
+  m_AttachEaseInTime: 0
   m_MovementType: 1
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -7243,7 +7194,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -7261,7 +7212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdec81fd0eb4764bbeb5f300c175e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionVisual: {fileID: 0}
   maxDistanceFromCenter: 5
   centerPoint: {x: 0, y: 1.2, z: 1.5}
   minScale: 0.2
@@ -12679,6 +12629,55 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1988901605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988901606}
+  - component: {fileID: 1988901607}
+  m_Layer: 0
+  m_Name: GeometryBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988901606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988901605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 179504252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1988901607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988901605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539a61d509568ce4b9d1e1f0c821623e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointPrefab: {fileID: 8976470161085322204, guid: e96c39250055eeb44aaa6b86624ba298, type: 3}
+  initialPoolSize: 2000
+  usePooling: 1
+  pointsParent: {fileID: 1071886524}
+  pointSizeRatio: 0.025
 --- !u!1 &1992771701
 GameObject:
   m_ObjectHideFlags: 0
@@ -13755,6 +13754,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 219340929}
+    - target: {fileID: 1225731235248711558, guid: ac27f403525025d4e95da8c277221c4e, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2024127532212951091, guid: ac27f403525025d4e95da8c277221c4e, type: 3}
       propertyPath: m_InteractionManager
       value: 

@@ -29,12 +29,23 @@ public class ObjectBoundsConstrainer : MonoBehaviour
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         rb = GetComponent<Rigidbody>();
-        if (rb != null) { rb.isKinematic = true; }
 
-        // Bloqueamos el colisionador al inicio para que no estorbe a la UI principal
+        if (rb != null)
+        {
+            rb.isKinematic = true;     // 🔒 Bloquea fuerzas externas
+            rb.useGravity = false;      // 🚫 Evita que se caiga si falla el kinematic
+            rb.linearDamping = 10f;     // ⚓ Mucha resistencia al movimiento
+            rb.angularDamping = 10f;
+        }
+
         BoxCollider bc = GetComponent<BoxCollider>();
-        if (bc != null) bc.enabled = false;
+        if (bc != null)
+        {
+            bc.enabled = false;
+            bc.isTrigger = true; // 👻 Lo volvemos fantasma por seguridad
+        }
     }
+
 
     private void OnEnable()
     {
@@ -135,11 +146,23 @@ public class ObjectBoundsConstrainer : MonoBehaviour
 
     private void ApplyConstraints()
     {
+        // Aumentamos el radio de seguridad para que no "salte" 
+        // mientras el usuario se mueve por la habitación
         float distance = Vector3.Distance(transform.position, centerPoint);
-        if (distance > maxDistanceFromCenter)
-            transform.position = centerPoint + (transform.position - centerPoint).normalized * maxDistanceFromCenter;
 
+        // Si la distancia es muy grande, en lugar de teletransportarlo 
+        // violentamente, simplemente lo bloqueamos o lo traemos suavemente.
+        if (distance > maxDistanceFromCenter)
+        {
+            // En lugar de snap instantáneo, lo movemos a la frontera suavemente
+            Vector3 targetPos = centerPoint + (transform.position - centerPoint).normalized * maxDistanceFromCenter;
+            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 5f);
+        }
+
+        // Aseguramos que la escala nunca sea 0
         float s = transform.localScale.x;
+        if (s < 0.01f) s = 0.5f;
         transform.localScale = Vector3.one * Mathf.Clamp(s, minScale, maxScale);
     }
+
 }
