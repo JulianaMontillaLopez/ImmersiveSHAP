@@ -53,16 +53,11 @@ public class PlotManager : MonoBehaviour
             return;
         }
 
-        // 🚀 MEJORA: Antes de notificar, reseteamos el PlotRoot a una posición inicial 
-        // frente al usuario si es necesario, para que no herede la posición del gráfico anterior.
-        if (plotRoot != null)
-        {
-            plotRoot.localPosition = Vector3.zero;
-            plotRoot.localRotation = Quaternion.identity;
-            plotRoot.localScale = Vector3.one;
-        }
-
-
+        // 🚀 MEJORA: Reseteamos el PlotRoot para que el gráfico nuevo aparezca en el origen
+        // y no herede la rotación/escala que el usuario aplicó al anterior.
+        plotRoot.localPosition = Vector3.zero;
+        plotRoot.localRotation = Quaternion.identity;
+        plotRoot.localScale = Vector3.one;
 
         Debug.Log($"ImmersiveSHAP, UNITY, [PlotManager] Starting render pipeline for {data.x.Length} points.");
 
@@ -147,31 +142,26 @@ public class PlotManager : MonoBehaviour
         Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Render pipeline completed successfully.");
 
         // Notificamos al sistema de interacción del Quest 3 que el gráfico es "real" y se puede tocar.
-        ObjectBoundsConstrainer obc = plotRoot.GetComponent<ObjectBoundsConstrainer>(); // Es más eficiente buscarlo en el root
+        ObjectBoundsConstrainer obc = plotRoot.GetComponent<ObjectBoundsConstrainer>();
         if (obc != null) obc.NotifyGraphRendered();
-    
-}
+    }
 
-
-
-/// <summary>
-/// Elimina el gráfico actual de la vista y resetea los estados internos.
-/// Invocado desde el botón "New Plot" del menú de pausa.
-/// </summary>
-public void ClearCurrentPlot()
+    /// <summary>
+    /// Elimina el gráfico actual de la vista y resetea los estados internos.
+    /// </summary>
+    public void ClearCurrentPlot()
     {
         Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Solicitud de limpieza total del gráfico.");
-        // 1. Limpieza física de GameObjects (Usando tu lógica de SceneCleaner)
+        // 1. Limpieza física de GameObjects
         SceneCleaner.ClearScene(completelyDestroy: true);
+
         // 2. 🚀 CRUCIAL: Notificamos al interactor que ya NO hay gráfico.
-        // Esto evita que la "jaula azul" aparezca si el usuario presiona Grip por error.
         ObjectBoundsConstrainer obc = plotRoot.GetComponent<ObjectBoundsConstrainer>();
         if (obc != null)
         {
-            obc.interactionVisual.SetActive(false); // Apagamos la jaula manualmente
-                                                    // Necesitamos un método en OBC para resetear la bandera
             obc.ResetInteractionState();
         }
+
         // 3. Limpiar buffers de datos para liberar memoria RAM
         rawPositions = null;
         filteredPositions = null;
@@ -179,22 +169,20 @@ public void ClearCurrentPlot()
         currentXValues?.Clear();
         currentShapValues?.Clear();
         currentZValues?.Clear();
-        // 3. Ocultar el objeto raíz si es necesario
+
+        // 4. Resetear escala y posición del PlotRoot
         if (plotRoot != null)
         {
-            // Opcional: Podrías resetear la escala del gráfico si el usuario lo movió/escaló
             plotRoot.localScale = Vector3.one;
-            // plotRoot.gameObject.SetActive(false); // Descomentar si quieres ocultar el root
+            plotRoot.localPosition = Vector3.zero;
+            plotRoot.localRotation = Quaternion.identity;
         }
-        // 4. Notificar a otros sistemas si es necesario (ej: ocultar leyendas)
+
         if (rendererController != null)
         {
             rendererController.DisableRendering();
         }
-
     }
-
-
 
     private void OnDisable()
     {

@@ -192,10 +192,19 @@ public class VisualMappingUIManager : MonoBehaviour
     {
         if (visualMappingPanel != null)
         {
+
             visualMappingPanel.SetActive(true);
+
+            // 🚀 NUEVO: Desactivamos la interacción con el gráfico mientras elegimos datos
+            ObjectBoundsConstrainer obc = FindFirstObjectByType<ObjectBoundsConstrainer>();
+            if (obc != null) obc.ResetInteractionState();
+
             var positioner = GetComponentInParent<VisualMappingUIPositioner>();
             if (positioner != null) positioner.RepositionNow();
         }
+        
+
+
     }
 
     public void HidePanel()
