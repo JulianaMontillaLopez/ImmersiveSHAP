@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6714724700169158261}
   - component: {fileID: 6127777998182421473}
   - component: {fileID: 2738236267396857388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PointPrefab
   m_TagString: GeneratedPoint
   m_Icon: {fileID: 0}
@@ -196,15 +196,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: -1
+  classLabel: 
   featureName: 
   featureValue: 0
   quantile: 0
   shapValue: 0
   impactShare: 0
-  baseValue: 0
-  finalPrediction: 0
   secondaryFeatureName: 
   secondaryFeatureValue: 0
+  baseValue: 0
+  finalPrediction: 0
   increasesPrediction: 0
   shapRank: -1
   note: 

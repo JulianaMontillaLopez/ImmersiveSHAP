@@ -493,6 +493,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55edc3756ceb8a49b9cce3c3d167f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPointAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Select Point
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 943beb61-3c90-4d9d-b885-68da500227ec
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   clearSelectionAction:
     m_UseReference: 0
     m_Action:
@@ -513,6 +525,21 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  zoomToTooltipAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Zoom To Tooltip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3c669947-357f-44d7-a79a-486749fe59e7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  zoomDistance: 0.25
+  zoomSpeed: 3
+  xrOriginTransform: {fileID: 0}
 --- !u!1 &5812422452667520010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -907,6 +934,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55edc3756ceb8a49b9cce3c3d167f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPointAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b7a1043e-c947-4251-a3ed-27838075bbef
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   clearSelectionAction:
     m_UseReference: 0
     m_Action:
@@ -927,3 +966,18 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  zoomToTooltipAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d5c8805f-a594-46d1-91cd-f6f1da81f487
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  zoomDistance: 0.25
+  zoomSpeed: 3
+  xrOriginTransform: {fileID: 0}
