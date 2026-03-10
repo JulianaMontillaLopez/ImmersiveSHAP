@@ -1,30 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
-using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
-/// <summary>
-/// BLOQUEO ESTRICTO: Solo permite manipulación si AMBAS manos están sujetando el gráfico.
-/// Optimizado para Quest 3 y XRI 3.08.
-/// </summary>
 [RequireComponent(typeof(XRGrabInteractable))]
-[RequireComponent(typeof(XRGeneralGrabTransformer))]
 public class ObjectBoundsConstrainer : MonoBehaviour
 {
     private XRGrabInteractable grabInteractable;
     private Rigidbody rb;
+    private bool isGraphRendered = false; // Seguro para el inicio
+
+    [Header("Visual Feedback")]
+    public GameObject interactionVisual;
 
     [Header("Constraints")]
-    public float maxDistanceFromCenter = 3.0f;
-    public Vector3 centerPoint = new Vector3(0, 1.2f, 1.5f);
+    public float maxDistanceFromCenter = 5.0f;
+    public Vector3 centerPoint;
     public float minScale = 0.25f;
     public float maxScale = 2.0f;
 
-    // Variables de control de estado
-    private bool needsPostReleaseCheck = false;
-    private int postReleaseFrames = 0;
-
-    // Memoria para revertir transformaciones ilegales (1 sola mano)
     private Vector3 lastLegalPosition;
     private Quaternion lastLegalRotation;
     private Vector3 lastLegalScale;
@@ -33,76 +26,66 @@ public class ObjectBoundsConstrainer : MonoBehaviour
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         rb = GetComponent<Rigidbody>();
+        if (rb != null) { rb.isKinematic = true; rb.useGravity = false; }
 
-        // Configuración inicial de XRI
-        if (grabInteractable != null)
-        {
-            grabInteractable.selectMode = InteractableSelectMode.Multiple; // Vital para 2 manos
-            grabInteractable.throwOnDetach = false; // Evita que salga volando al soltar
-        }
-
-        // Configuración de físicas
-        if (rb != null)
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-        }
-
-        // Inicializar memoria de transformación
-        CaptureLegalState();
+        // El visual siempre apagado al despertar
+        if (interactionVisual != null) interactionVisual.SetActive(false);
     }
 
     private void OnEnable()
     {
-        if (grabInteractable != null)
-            grabInteractable.selectExited.AddListener(OnReleased);
+        // Solo escuchamos el agarre (Select), ignoramos el Hover.
+        grabInteractable.selectEntered.AddListener(OnGrab);
+        grabInteractable.selectExited.AddListener(OnRelease);
     }
 
     private void OnDisable()
     {
-        if (grabInteractable != null)
-            grabInteractable.selectExited.RemoveListener(OnReleased);
+        grabInteractable.selectEntered.RemoveListener(OnGrab);
+        grabInteractable.selectExited.RemoveListener(OnRelease);
     }
 
-    private void OnReleased(SelectExitEventArgs args)
+    // 🚀 MÉTODO PARA LLAMAR DESDE TU PLOT MANAGER
+    // Llama a esto cuando el gráfico termine de dibujarse.
+    public void NotifyGraphRendered()
     {
-        // Al soltar completamente, activamos una limpieza de velocidad por 10 frames
-        if (grabInteractable.interactorsSelecting.Count == 0)
-        {
-            needsPostReleaseCheck = true;
-            postReleaseFrames = 10;
-            ResetVelocity();
-        }
+        isGraphRendered = true;
+        centerPoint = transform.position; // Sincroniza el centro aquí
+        CaptureLegalState();
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        // Solo mostramos la jaula si el gráfico ya existe y se presiona Grip
+        if (interactionVisual != null && isGraphRendered)
+            interactionVisual.SetActive(true);
+    }
+
+    private void OnRelease(SelectExitEventArgs args)
+    {
+        if (interactionVisual != null)
+            interactionVisual.SetActive(false);
     }
 
     private void LateUpdate()
     {
+        if (!isGraphRendered) return;
+
         int grabCount = grabInteractable.interactorsSelecting.Count;
 
-        // 🛑 CASO 1: BLOQUEO (1 Sola mano)
-        // Si detectamos que solo hay un controlador agarrando, forzamos la posición anterior.
-        if (grabCount == 1)
+        if (grabCount >= 2)
+        {
+            ApplyConstraints();
+            CaptureLegalState();
+        }
+        else
         {
             transform.position = lastLegalPosition;
             transform.rotation = lastLegalRotation;
             transform.localScale = lastLegalScale;
-            ResetVelocity();
-            return;
         }
 
-        // 🟢 CASO 2: MOVIMIENTO PERMITIDO (2 Manos o ninguna)
-        // Si hay 2+ manos o el objeto está libre (aplicando límites)
-        if (grabCount >= 2 || grabCount == 0 || needsPostReleaseCheck)
-        {
-            ApplyConstraints();
-            CaptureLegalState();
-
-            if (needsPostReleaseCheck)
-            {
-                ResetVelocity();
-                if (--postReleaseFrames <= 0) needsPostReleaseCheck = false;
-            }
-        }
+        if (rb != null) { rb.linearVelocity = Vector3.zero; rb.angularVelocity = Vector3.zero; }
     }
 
     private void CaptureLegalState()
@@ -112,35 +95,20 @@ public class ObjectBoundsConstrainer : MonoBehaviour
         lastLegalScale = transform.localScale;
     }
 
-    private void ResetVelocity()
-    {
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-    }
-
     private void ApplyConstraints()
     {
-        // 1. Limitar Posición (Esfera de contención)
         float distance = Vector3.Distance(transform.position, centerPoint);
         if (distance > maxDistanceFromCenter)
-        {
             transform.position = centerPoint + (transform.position - centerPoint).normalized * maxDistanceFromCenter;
-        }
 
-        // 2. Limitar Escala (Uniforme)
         float s = transform.localScale.x;
-        if (s < minScale || s > maxScale)
-        {
-            transform.localScale = Vector3.one * Mathf.Clamp(s, minScale, maxScale);
-        }
+        transform.localScale = Vector3.one * Mathf.Clamp(s, minScale, maxScale);
     }
 
-    private void OnDrawGizmosSelected()
+    public void ResetInteractionState()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(centerPoint, maxDistanceFromCenter);
+        isGraphRendered = false;
+        if (interactionVisual != null) interactionVisual.SetActive(false);
     }
+
 }

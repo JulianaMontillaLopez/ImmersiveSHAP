@@ -53,6 +53,17 @@ public class PlotManager : MonoBehaviour
             return;
         }
 
+        // 🚀 MEJORA: Antes de notificar, reseteamos el PlotRoot a una posición inicial 
+        // frente al usuario si es necesario, para que no herede la posición del gráfico anterior.
+        if (plotRoot != null)
+        {
+            plotRoot.localPosition = Vector3.zero;
+            plotRoot.localRotation = Quaternion.identity;
+            plotRoot.localScale = Vector3.one;
+        }
+
+
+
         Debug.Log($"ImmersiveSHAP, UNITY, [PlotManager] Starting render pipeline for {data.x.Length} points.");
 
         // Clear previous session
@@ -134,20 +145,34 @@ public class PlotManager : MonoBehaviour
         rendererController?.EnableRendering();
 
         Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Render pipeline completed successfully.");
-    }
+
+        // Notificamos al sistema de interacción del Quest 3 que el gráfico es "real" y se puede tocar.
+        ObjectBoundsConstrainer obc = plotRoot.GetComponent<ObjectBoundsConstrainer>(); // Es más eficiente buscarlo en el root
+        if (obc != null) obc.NotifyGraphRendered();
+    
+}
 
 
 
-    /// <summary>
-    /// Elimina el gráfico actual de la vista y resetea los estados internos.
-    /// Invocado desde el botón "New Plot" del menú de pausa.
-    /// </summary>
-    public void ClearCurrentPlot()
+/// <summary>
+/// Elimina el gráfico actual de la vista y resetea los estados internos.
+/// Invocado desde el botón "New Plot" del menú de pausa.
+/// </summary>
+public void ClearCurrentPlot()
     {
         Debug.Log("ImmersiveSHAP, UNITY, [PlotManager] Solicitud de limpieza total del gráfico.");
         // 1. Limpieza física de GameObjects (Usando tu lógica de SceneCleaner)
         SceneCleaner.ClearScene(completelyDestroy: true);
-        // 2. Limpiar buffers de datos para liberar memoria RAM
+        // 2. 🚀 CRUCIAL: Notificamos al interactor que ya NO hay gráfico.
+        // Esto evita que la "jaula azul" aparezca si el usuario presiona Grip por error.
+        ObjectBoundsConstrainer obc = plotRoot.GetComponent<ObjectBoundsConstrainer>();
+        if (obc != null)
+        {
+            obc.interactionVisual.SetActive(false); // Apagamos la jaula manualmente
+                                                    // Necesitamos un método en OBC para resetear la bandera
+            obc.ResetInteractionState();
+        }
+        // 3. Limpiar buffers de datos para liberar memoria RAM
         rawPositions = null;
         filteredPositions = null;
         scaledPositions = null;
