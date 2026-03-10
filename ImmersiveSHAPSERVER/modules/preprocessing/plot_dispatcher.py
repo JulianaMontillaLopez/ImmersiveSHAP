@@ -2,6 +2,7 @@
 
 from modules.preprocessing import generate_scatter_plot
 
+
 def dispatch(config, X, shap_values, explainer, y=None):
     """
     Directs the request to the corresponding plot generator.
@@ -39,5 +40,7 @@ def dispatch(config, X, shap_values, explainer, y=None):
             "message": "The generator did not return a valid dictionary."
         }
 
-    plot_data["action"] = "plot_response"
+    if "action" not in plot_data:
+        plot_data["action"] = "plot_response"
+
     return plot_data
