@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_RaycastMask.m_Bits
       value: 2147483809
       objectReference: {fileID: 0}
+    - target: {fileID: 1799970780752716758, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_PhysicsLayerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 3594957134243157741, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -23,6 +27,18 @@ PrefabInstance:
     - target: {fileID: 4222512965381398817, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712120705426196345, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732002813344482557, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182325667379675029, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6231880100299461080, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Name
@@ -76,6 +92,10 @@ PrefabInstance:
       propertyPath: m_InteractionLayers.m_Bits
       value: 2147483648
       objectReference: {fileID: 0}
+    - target: {fileID: 7340706055291501467, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7710660454765781388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_RaycastMask.m_Bits
       value: 2147483809
@@ -84,6 +104,10 @@ PrefabInstance:
       propertyPath: xrOriginTransform
       value: 
       objectReference: {fileID: 492522395366159008}
+    - target: {fileID: 8784911378672139593, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_PhysicsLayerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3594957134243157741, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
     - {fileID: 2870118592044087289, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -205,36 +229,60 @@ MonoBehaviour:
     m_UseReference: 0
     m_Action:
       m_Name: Select Point
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 663bb8df-ea6a-4ae3-b5f8-d2cbee971bb7
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e151599b-9ebf-479b-8ac2-22ec38425203
+        m_Path: <XRController>{RightHand}/{TriggerButton}
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Select Point
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   clearSelectionAction:
     m_UseReference: 0
     m_Action:
       m_Name: Clear Selection
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 70574721-931d-42c6-b4ff-5d1b172e3a7b
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 4dbcc5ce-934c-4f79-9907-da1a9c3d1a1e
+        m_Path: <XRController>{RightHand}/{SecondaryButton}
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Clear Selection
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   zoomToTooltipAction:
     m_UseReference: 0
     m_Action:
       m_Name: Zoom To Tooltip
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: d8ecf13d-f990-4baf-a141-0124a4a129f3
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 7a1c1ac0-8d3f-46a2-8ec8-a1ef91f1549b
+        m_Path: <XRController>{RightHand}/{PrimaryButton}
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Zoom To Tooltip
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   zoomDistance: 0.25

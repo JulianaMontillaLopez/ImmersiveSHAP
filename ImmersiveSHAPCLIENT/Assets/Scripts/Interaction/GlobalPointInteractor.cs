@@ -23,9 +23,13 @@ public class GlobalPointInteractor : MonoBehaviour
     private XRBaseInteractor interactor;
     private HapticImpulsePlayer hapticPlayer;
     private GameObject currentHoveredPoint;
-    private bool isZooming = false;
     private Vector3 zoomTargetPos;
     private Vector3 originalOriginPos;
+
+    // Añadimos dos booleanos para controlar los estados
+    private bool isZoomedIn = false;
+    private bool isMoving = false;
+
 
     private void Awake()
     {
@@ -73,11 +77,13 @@ public class GlobalPointInteractor : MonoBehaviour
     private void Update()
     {
         HandleInputLogic();
-        if (isZooming && xrOriginTransform != null) ExecuteZoomMovement();
+        // Usamos nuestro nuevo controlador booleano
+        if (isMoving && xrOriginTransform != null) ExecuteZoomMovement();
     }
 
     private void HandleInputLogic()
     {
+        // 1. Botón de Seleccionar Punto (Gatillo)
         if (selectPointAction.action != null && selectPointAction.action.WasPressedThisFrame())
         {
             if (currentHoveredPoint != null)
@@ -87,16 +93,68 @@ public class GlobalPointInteractor : MonoBehaviour
             }
         }
 
+        // 2. Botón de Limpiar Selección (Gatillo al aire libre u otro)
         if (clearSelectionAction.action != null && clearSelectionAction.action.WasPressedThisFrame())
         {
             PointSelection.Instance?.ClearSelection();
-            if (xrOriginTransform != null) xrOriginTransform.position = originalOriginPos;
-            isZooming = false;
+            if (isZoomedIn)
+            {
+                // Ordenamos volver a casa suavemente si limpiamos
+                zoomTargetPos = originalOriginPos;
+                isZoomedIn = false;
+                isMoving = true;
+            }
         }
 
+        // 3. Botón "Y/B" de ACERCAR/ALEJAR (Toggle)
         if (zoomToTooltipAction.action != null && zoomToTooltipAction.action.WasPressedThisFrame())
         {
-            PrepareZoom();
+            ToggleZoom();
+        }
+    }
+
+    // -- LA NUEVA LÓGICA DE TOGGLE --
+    private void ToggleZoom()
+    {
+        // Si no estamos cerca, Acercar
+        if (!isZoomedIn)
+        {
+            GameObject target = currentHoveredPoint;
+            if (target == null && TooltipPinManager.Instance != null)
+                target = TooltipPinManager.Instance.GetLastPinnedPoint();
+
+            if (target != null && xrOriginTransform != null)
+            {
+                // CRUCIAL: Solo guardamos la posición original CUANDO NO ESTAMOS DENTRO.
+                // Así evitamos sobreescribir la memoria y quedar atrapados.
+                originalOriginPos = xrOriginTransform.position;
+
+                Vector3 pointPos = target.transform.position;
+                Vector3 directionToCamera = (Camera.main.transform.position - pointPos).normalized;
+                zoomTargetPos = pointPos + directionToCamera * zoomDistance;
+
+                isZoomedIn = true;
+                isMoving = true;
+            }
+        }
+        else // Si ya estamos cerca, Alejar (Volver a posición original)
+        {
+            zoomTargetPos = originalOriginPos;
+            isZoomedIn = false;
+            isMoving = true;
+        }
+    }
+
+    private void ExecuteZoomMovement()
+    {
+        // Interpola la posición suavemente
+        xrOriginTransform.position = Vector3.Lerp(xrOriginTransform.position, zoomTargetPos, Time.deltaTime * zoomSpeed);
+
+        // Cuando ya está prácticamente en el destino, frenamos y ajustamos perfecto
+        if (Vector3.Distance(xrOriginTransform.position, zoomTargetPos) < 0.01f)
+        {
+            xrOriginTransform.position = zoomTargetPos; // Snap de precisión final
+            isMoving = false; // Paramos el motor
         }
     }
 
@@ -117,27 +175,5 @@ public class GlobalPointInteractor : MonoBehaviour
             PointSelection.Instance?.HandleUnhover(currentHoveredPoint);
             currentHoveredPoint = null;
         }
-    }
-
-    private void PrepareZoom()
-    {
-        GameObject target = currentHoveredPoint;
-        if (target == null && TooltipPinManager.Instance != null)
-            target = TooltipPinManager.Instance.GetLastPinnedPoint();
-
-        if (target != null && xrOriginTransform != null)
-        {
-            originalOriginPos = xrOriginTransform.position;
-            Vector3 pointPos = target.transform.position;
-            Vector3 directionToCamera = (Camera.main.transform.position - pointPos).normalized;
-            zoomTargetPos = pointPos + directionToCamera * zoomDistance;
-            isZooming = true;
-        }
-    }
-
-    private void ExecuteZoomMovement()
-    {
-        xrOriginTransform.position = Vector3.Lerp(xrOriginTransform.position, zoomTargetPos, Time.deltaTime * zoomSpeed);
-        if (Vector3.Distance(xrOriginTransform.position, zoomTargetPos) < 0.01f) isZooming = false;
     }
 }

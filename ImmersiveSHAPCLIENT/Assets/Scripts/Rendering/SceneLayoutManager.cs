@@ -11,7 +11,7 @@ public class SceneLayoutManager : MonoBehaviour
 {
     [Header("Layout Parameters")]
     [Tooltip("Forward distance from the camera (meters) where the plot will be placed.")]
-    public float targetDistanceFromCamera = 1.5f;
+    public float targetDistanceFromCamera = 0.5f;
 
     [Header("References (auto-assign if null)")]
     public Transform xrCameraTransform;
@@ -66,7 +66,9 @@ public class SceneLayoutManager : MonoBehaviour
         // 3. Posición fija a la altura del pecho (ej. 1.2 metros sobre el suelo)
         // En lugar de seguir la altura de la cámara, usamos una altura fija ergonómica
         Vector3 targetPos = xrCameraTransform.position + forwardLevel * targetDistanceFromCamera;
-        targetPos.y = 1.2f; // <--- Bloqueamos la altura para que sea siempre cómoda
+        //targetPos.y = 1.2f; // <--- Bloqueamos la altura para que sea siempre cómoda
+        targetPos.y = xrCameraTransform.position.y - 0.25f; // Ancla la altura a tu cabeza real, menos 25 cms hacia el pecho
+
 
         // 4. ALIGNMENT & BOUNDS: Center the visual volume at the targetPos
         Bounds currentBounds = new Bounds(targetPos, Vector3.zero);
