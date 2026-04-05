@@ -37,6 +37,13 @@ public class VisualMappingUIPositioner : MonoBehaviour
             xrCamera = Camera.main.transform;
     }
 
+    // Obligamos a que se ejecute también en Start(), 
+    // cuando Unity ya garantizó que todos los objetos existen.
+    private void Start()
+    {
+        RepositionNow();
+    }
+
     private void OnEnable()
     {
         // CRUCIAL: Cada vez que el menú se activa (inicio o tras un Cancel), 
@@ -74,11 +81,18 @@ public class VisualMappingUIPositioner : MonoBehaviour
     /// </summary>
     public void RepositionNow()
     {
+        // 🚀 MEJORA: Búsqueda robusta de la cámara XR al arrancar
         if (xrCamera == null && Camera.main != null) xrCamera = Camera.main.transform;
-        if (xrCamera == null) return;
+        if (xrCamera == null)
+        {
+            var origin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+            if (origin != null && origin.Camera != null) xrCamera = origin.Camera.transform;
+        }
 
+        if (xrCamera == null) return; // Si de verdad no hay cámara, no explota
         ApplyPlacement(useSmoothing: false);
     }
+
 
     private void ApplyPlacement(bool useSmoothing)
     {

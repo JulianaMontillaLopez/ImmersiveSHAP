@@ -60,6 +60,10 @@ public class ProcessStatusUI : MonoBehaviour
         overlayRoot.SetActive(true);
         persistentRoot.SetActive(false);
         UpdateProgress(0, message);
+        // 🚀 NUEVO: Fuerza matemáticamente al Canvas a saltar frente a tus ojos 
+        // en el instante exacto en que enciendes la barra de progreso
+        var positioner = GetComponent<VisualMappingUIPositioner>();
+        if (positioner != null) positioner.RepositionNow();
     }
 
     public void UpdateProgress(float percent, string message)
@@ -91,6 +95,13 @@ public class ProcessStatusUI : MonoBehaviour
     {
         bool currentState = persistentRoot.activeSelf;
         persistentRoot.SetActive(!currentState);
+
+        // 🚀 NUEVO: Si acabamos de MOSTRAR el menú de botones, forzamos el salto a la vista
+        if (!currentState)
+        {
+            var positioner = GetComponent<VisualMappingUIPositioner>();
+            if (positioner != null) positioner.RepositionNow();
+        }
         Debug.Log($"[ProcessStatusUI] Menú {(!currentState ? "Mostrado" : "Oculto")}");
     }
 

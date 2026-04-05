@@ -192,19 +192,14 @@ public class VisualMappingUIManager : MonoBehaviour
     {
         if (visualMappingPanel != null)
         {
-
             visualMappingPanel.SetActive(true);
+            
+            // Buscamos el posicionador directamente en este objeto, no en "Parent"
+            var positioner = GetComponent<VisualMappingUIPositioner>();
+            if (positioner == null) positioner = GetComponentInParent<VisualMappingUIPositioner>(); // Respaldo
 
-            // 🚀 NUEVO: Desactivamos la interacción con el gráfico mientras elegimos datos
-            ObjectBoundsConstrainer obc = FindFirstObjectByType<ObjectBoundsConstrainer>();
-            if (obc != null) obc.ResetInteractionState();
-
-            var positioner = GetComponentInParent<VisualMappingUIPositioner>();
             if (positioner != null) positioner.RepositionNow();
         }
-        
-
-
     }
 
     public void HidePanel()
