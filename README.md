@@ -9,7 +9,7 @@
 
 - **Juliana Andrea Montilla López** — Universidad del Cauca  
 - **Daniel Valencia Medina** — Universidad del Cauca  
-- **Jovani Alberto Jiménez Builes** — Universidad Nacional de Colombia, Medellín Campus  
+- **Jovani Alberto Jiménez Builes** — Universidad Nacional de Colombia Sede Medellín   
 - **Gustavo Adolfo Ramírez González** — Universidad del Cauca  
 
 ---
@@ -245,11 +245,6 @@ Build and deploy the application.
 | Plot manipulation | Grip | Translate or rotate visualizations |
 | Scaling | Dual grip | Resize visual structures |
 
----
-
-## Contact
-
-For questions regarding implementation or reproducibility, please contact the corresponding authors.
 
 ---
 
