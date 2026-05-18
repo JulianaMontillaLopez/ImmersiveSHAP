@@ -132,23 +132,16 @@ Contains the scripts responsible for rendering and interaction.
 Recommended:
 
 - Python ≥ 3.10
+  
+The required Python dependencies and corresponding package versions are provided in the `requirements.txt` file included in this repository.
 
-Required packages:
-
-```bash
-websockets
-shap
-xgboost
-scikit-learn
-pandas
-numpy
-```
-
-Install dependencies:
+Install all dependencies using:
 
 ```bash
-pip install websockets shap xgboost scikit-learn pandas numpy
+pip install -r requirements.txt
 ```
+
+This file contains the package versions used during development and evaluation to facilitate reproducibility.
 
 ### Unity Environment
 
