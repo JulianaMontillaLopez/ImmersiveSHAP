@@ -252,7 +252,7 @@ Build and deploy the application.
 
 If you use this repository in your research, please cite the associated manuscript:
 
-Montilla-López, J., Valencia, D., Jimenez-Builes, Jovani A., and Ramírez-González, G. A.  
+Montilla-López, J., Valencia, Daniel, Jimenez-Builes, Jovani A., and Ramírez-González, Gustavo.  
 *ImmersiveSHAP: Immersive analytics visualization system for XAI using SHAP scatter plot.*
 
 Publication details will be updated after publication.
