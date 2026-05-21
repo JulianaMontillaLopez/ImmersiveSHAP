@@ -43,7 +43,7 @@ Instrumentation included:
 
 - Unity runtime logging
 - Android Logcat
-- Meta Quest Developer Hub (MQDH)
+- Meta Quest Developer Hub (MQDH) and OVR Metrics Tool
 - Python execution logs
 
 Logs were collected under real deployment conditions to reflect actual runtime behavior on target hardware.
