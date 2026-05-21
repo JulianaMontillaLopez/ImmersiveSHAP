@@ -14,6 +14,13 @@
 **/[Rr]ecordings/
 **/[Pp]ackage[Cc]ache/
 
+.utmp/
+Temp/
+Library/
+Obj/
+Build/
+Logs/
+
 # Unity auto-generated files
 sysinfo.txt
 mono_crash.*
