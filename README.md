@@ -1,251 +1,390 @@
-# ImmersiveSHAP: Immersive Visualization System for Explainable Artificial Intelligence
+# ImmersiveSHAP: Immersive Visualization System for Explainable Artificial Intelligence (XAI)
 
-## Manuscript Information
+---
+
+## 📄 Manuscript Information
 
 **Title:** *ImmersiveSHAP: Immersive analytics visualization system for XAI using SHAP scatter plot*  
-**Submission ID:** 10596  
+**Manuscript ID:** 10596  
 
-### Authors
+---
+
+## 👥 Authors
 
 - **Juliana Andrea Montilla López** — Universidad del Cauca  
 - **Daniel Valencia Medina** — Universidad del Cauca  
-- **Jovani Alberto Jiménez Builes** — Universidad Nacional de Colombia Sede Medellín   
+- **Jovani Alberto Jiménez Builes** — Universidad Nacional de Colombia Sede Medellín  
 - **Gustavo Adolfo Ramírez González** — Universidad del Cauca  
 
 ---
 
-## Repository Overview
+## 📌 Overview
 
-This repository contains the source code and computational resources associated with **ImmersiveSHAP**, an immersive visualization system designed to support Explainable Artificial Intelligence (XAI) analysis in Virtual Reality (VR).
+ImmersiveSHAP is an immersive visualization system for Explainable Artificial Intelligence (XAI) that supports the exploration of SHAP explanations in Virtual Reality environments. 
+The system transforms machine learning explanations into three-dimensional immersive visualizations that allow users to inspect feature contributions and interactions.
+The architecture follows a distributed **Client–Server model** based on asynchronous WebSocket communication:
 
-The system transforms SHAP (SHapley Additive exPlanations) outputs into three-dimensional visual representations to support the exploration of multidimensional relationships and feature interactions in immersive environments.
-
-ImmersiveSHAP follows a distributed Client–Server architecture based on asynchronous WebSocket communication.
-
-The implementation consists of two primary components:
-
-### Backend (Python Server)
-
-Responsible for data processing and explanation generation.
-
-Main functionalities include:
-
-- Loading and preprocessing tabular datasets
-- Training predictive models
-- Computing SHAP-based explanation metrics
-- Identifying feature interactions
-- Serializing processed data into JSON format for visualization
-
-### Frontend (Unity Client)
-
-Responsible for immersive visualization and interaction.
-
-Main functionalities include:
-
-- Receiving and deserializing processed data
-- Mapping data into three-dimensional visual structures
-- Rendering interactive point-based visualizations
-- Managing user interaction using VR controllers
+- **Python Server:** preprocessing, model training, SHAP computation, and data serialization
+- **Unity Client:** immersive visualization and VR interaction
 
 ---
 
-## Repository Structure
+## 📦 Software Stack
 
-The repository is organized into backend and frontend modules.
+### Python Backend
 
-### Python Server (Backend)
+- Python 3.11.9
+- NumPy 2.2.6
+- scikit-learn 1.7.0
+- XGBoost 3.0.2
+- SHAP 0.48
+- Matplotlib 3.10.3
+- WebSockets 15.0.1
 
-Contains the data processing pipeline and communication services.
+### Unity Frontend
 
-#### Main Entry
+- Unity 6000.0.29f1
+- Universal Render Pipeline (URP)
+- XR Interaction Toolkit 3.0.8
+- OpenXR
+- NativeWebSocket
 
-- `main.py`  
-Initializes the asynchronous server and manages communication with connected clients.
+All Python package versions used during development are included in:
 
-#### Communication Module
+```text
+requirements.txt
+```
 
-`modules/communication/`
-
-- `websocket_server.py`
-- `deserialization_server.py`
-- `data_formatting_server.py`
-
-Handles message exchange and serialization processes.
-
-#### Preprocessing Module
-
-`modules/preprocessing/`
-
-- `load_data.py`
-- `preprocessing_data.py`
-- `train_model.py`
-- `explanation_generation.py`
-- `generate_scatter_plot.py`
-- `plot_dispatcher.py`
-- `data_export.py`
-
-Performs data preparation, model training, SHAP computation, and visualization data generation.
-
-Additional utility modules:
-
-- `resource_inspector.py`
-- `request_manager.py`
-- `status_reporter.py`
+to facilitate reproducibility.
 
 ---
 
-### Unity Client (Frontend)
+## 📊 Datasets
 
-Contains the scripts responsible for rendering and interaction.
+The system uses datasets provided directly by the scikit-learn API. Datasets are loaded programmatically during execution, and therefore, no external files are required.
 
-#### Networking
+Implemented datasets:
 
-- `WebSocketClient.cs`
-- `DeserializationClient.cs`
-- `DeserializedData.cs`
+- Iris Dataset (`load_iris`)
+- Breast Cancer Wisconsin Dataset (`load_breast_cancer`)
+- California Housing Dataset (`fetch_california_housing`)
 
-#### Rendering and Layout
+Dataset loading implementation:
 
-- `PlotManager.cs`
-- `SceneLayoutManager.cs`
-- `GeometryBuilder.cs`
-- `RendererController.cs`
-- `VisualEncoder.cs`
-- `DataScalerAndAligner.cs`
-- `AxesAndReferenceBuilder.cs`
-- `Axis.cs`
+```python
+from sklearn.datasets import (
+    load_iris,
+    load_breast_cancer,
+    fetch_california_housing
+)
+```
 
-#### VR Interaction
+Dataset documentation:
 
-- `GlobalPointInteractor.cs`
-- `PointSelection.cs`
-- `TooltipManager.cs`
-- `TooltipUI.cs`
-- `TooltipPinManager.cs`
+https://scikit-learn.org/stable/datasets.html
 
 ---
 
-## System Requirements
+## 📂 Repository Structure
 
-### Python Environment
+Repository root:
 
-Recommended:
+```text
+ImmersiveSHAP/
+├── ImmersiveSHAPCLIENT/          # Unity client project
+├── ImmersiveSHAPSERVER/          # Python serve modules
+└── README.md
+```
+
+---
+## 📂 Detailed File Description
+
+The following tables summarize the primary implementation modules and scripts included in the repository.
+
+---
+
+### 🖥 Python Server
+
+Location:
+
+```text
+ImmersiveSHAPSERVER/modules/
+```
+
+Main server entry:
+
+```text
+ImmersiveSHAPSERVER/main.py
+```
+
+| Module/File | Script | Description |
+|---|---|---|
+| Preprocessing | `request_manager.py` | Orchestrates the analytical workflow and coordinates processing modules |
+| Preprocessing | `load_data.py` | Loads datasets and returns features, targets, and metadata |
+| Preprocessing | `preprocessing_data.py` | Applies data cleaning and preprocessing operations |
+| Preprocessing | `train_model.py` | Trains machine learning models |
+| Preprocessing | `explanation_generation.py` | Computes SHAP explanations |
+| Preprocessing | `generate_scatter_plot.py` | Generates SHAP scatter plots, extracts spatial information, and exports a 2D scatter plot to the `output/` folder. |
+| Preprocessing | `data_export.py` | Serializes processed data for transmission |
+| Preprocessing | `resource_inspector.py` | Lists available datasets and models |
+| Preprocessing | `status_reporter.py` | Reports execution status |
+| Preprocessing | `cancellation_state.py` | Handles task interruption and cancellation |
+| Communication | `websocket_server.py` | Manages asynchronous WebSocket communication |
+| Communication | `deserialization_server.py` | Validates and routes incoming requests |
+| Communication | `data_formatting_server.py` | Formats responses into JSON messages |
+
+The `output/` folder is generated automatically at runtime and is therefore not included in this repository.
+
+
+---
+
+### 🕶️ Unity Client
+
+Location:
+
+```text
+ImmersiveSHAPCLIENT/Assets/Scripts/
+```
+
+Main Unity scene:
+
+```text
+Sample Scene
+```
+
+
+| Module/File| Script | Description |
+|---|---|---|
+| Communication | `WebSocketClient.cs` | Establishes connection with the Python server |
+| Communication | `DeserializationClient.cs` | Parses incoming messages |
+| Communication | `DataFormattingClient.cs` | Structures the JSON messages sent to the server |
+| Core | `PlotManager.cs` | Coordinates visualization workflow |
+| Rendering | `DataInputManager.cs` / `PointFilter.cs` | Validates and filters incoming data |
+| Rendering | `DataScalerAndAligner.cs` | Maps incoming data into 3D coordinates |
+| Rendering | `VisualEncoder.cs` | Maps data attributes into visual encodings |
+| Rendering | `GeometryBuilder.cs` | Generates point-cloud geometry |
+| Rendering | `AxesAndReferenceBuilder.cs` | Creates axes, labels, and reference structures |
+| Rendering | `RendererController.cs` | Executes rendering operations |
+| Rendering | `SceneLayoutManager.cs` | Organizes scene layout |
+| Rendering | `BoundsOptimizer.cs`, `SceneCleaner.cs` | Maintains rendering performance |
+| UI | `VisualMappingUIManager.cs` | Manages immersive visualization controls |
+| Interaction | `GlobalGraphManipulator.cs` | Supports bimanual scaling and rotation |
+| Interaction | `PointSelection.cs`, `GlobalPointInteractor.cs` | Handles point selection and ray interactions |
+| Interaction | `SelectionHighlighter.cs` | Highlights selected objects |
+| Interaction | `DataPointMeta.cs`, `DataContentExtractor.cs` | Stores and retrieves metadata |
+| Interaction | `TooltipManager.cs`, `TooltipUI.cs` | Displays contextual information |
+| Interaction | `TooltipPinManager.cs`, `DataComparisonExtractor.cs` | Supports comparison and inspection tasks |
+| UI | `ProcessStatusUI.cs` | Displays backend processing status |
+
+---
+
+# ⚙️ Requirements
+
+## Python
 
 - Python ≥ 3.10
-  
-The required Python dependencies and corresponding package versions are provided in the `requirements.txt` file included in this repository.
 
-Install all dependencies using:
+## Unity
+
+- Unity Editor 6000.0.29f1
+- OpenXR enabled
+- XR Interaction Toolkit
+- Android Build Support
+
+---
+
+# 🚀 Installation
+
+Clone repository:
+
+```bash
+git clone https://github.com/JulianaMontillaLopez/ImmersiveSHAP.git
+
+cd ImmersiveSHAP
+```
+
+Create a Python virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate environment:
+
+Linux/Mac:
+
+```bash
+source venv/bin/activate
+```
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-This file contains the package versions used during development and evaluation to facilitate reproducibility.
-
-### Unity Environment
-
-- Unity Editor `6000.0.29f1`
-- XR Interaction Toolkit ≥ `3.0.8`
-- Android Build Support
-- Meta Quest 3 headset (for standalone deployment)
-
 ---
 
-## Installation
+# ▶️ Execution
 
-Clone the repository:
+## Step 1: Run Python Server
 
-```bash
-git clone https://github.com/your-username/ImmersiveSHAP.git
+Navigate to:
 
-cd ImmersiveSHAP
+```text
+ImmersiveSHAPSERVER/
 ```
 
-Create and activate a Python virtual environment.
-
-Install required dependencies.
-
----
-
-## Reproducing System Execution
-
-### Step 1: Run the Python Server
-
-Navigate to the project directory and execute:
+Execute:
 
 ```bash
 python main.py
 ```
 
-The server should initialize and begin listening for client requests.
+If execution is successful, the terminal should display:
+
+```text
+🔌 WebSocket server iniciado en ws://0.0.0.0:8765
+```
+
+This indicates that the server is active and listening for incoming requests.
+
+No modifications are required in:
+
+```text
+modules/communication/websocket_server.py
+```
+
+The server automatically listens on all available interfaces.
 
 ---
 
-### Step 2: Execute the Unity Client
+## Step 2: Run Unity Client
 
-For development and testing:
-
-1. Open Unity Hub
-2. Add project from disk
-3. Open the main scene
-4. Configure:
+Open:
 
 ```text
-ws://localhost:8765
+ImmersiveSHAPCLIENT/
 ```
 
-5. Press Play
+in Unity Hub.
 
----
+Then:
 
-### Step 3: Deploy to Meta Quest 3
-
-#### Network Configuration
-
-Replace:
+1. Open project
+2. Load the **Sample Scene**
+3. Open:
 
 ```text
-ws://localhost:8765
+Assets/Scripts/Communication/WebSocketClient.cs
 ```
 
-with:
+Configure endpoint:
 
 ```text
 ws://<LOCAL_IP>:8765
 ```
 
-Ensure that the PC and headset are connected to the same local network.
+Example:
 
-#### Build Configuration
+```text
+ws://192.168.1.50:8765
+```
 
-1. Go to **File → Build Settings**
-2. Select **Android**
-3. Click **Switch Platform**
-4. Enable **Oculus** under XR Plug-in Management
+Save changes.
 
-Build and deploy the application.
+Press:
 
----
+```text
+Play
+```
 
-## VR Interaction Summary
+Ensure that both:
 
-| Task | Interaction | Description |
-|---|---:|---|
-| Pointer interaction | Wrist movement | Interacts with interface elements |
-| Menu selection | Trigger | Select interface components |
-| Data inspection | Trigger | Displays point information |
-| Plot manipulation | Grip | Translate or rotate visualizations |
-| Scaling | Dual grip | Resize visual structures |
+- Python server
+- Unity client
 
+are connected through the same local network.
 
 ---
 
-## Citation
+## Step 3: Deploy to Meta Quest 3
 
-If you use this repository in your research, please cite the associated manuscript:
+Use the same endpoint configuration:
 
-Montilla-López, J., Valencia, Daniel, Jimenez-Builes, Jovani A., and Ramírez-González, Gustavo.  
+```text
+Assets/Scripts/Communication/WebSocketClient.cs
+```
+
+```text
+ws://<LOCAL_IP>:8765
+```
+
+Unity Build settings:
+
+- Platform: Android
+- Scripting Backend: IL2CPP
+- Architecture: ARM64
+- XR Plugin: OpenXR
+
+Deploy using:
+
+```text
+Build and Run
+```
+
+Requirements:
+
+- Meta Quest Developer Mode enabled
+- PC and headset connected to same Wi-Fi network
+- Firewall allowing port:
+
+```text
+8765
+```
+
+---
+
+## 🎮 VR Interaction Summary
+
+| Task | Input | Behavior |
+|---|---|---|
+| Selection | Trigger | Select data points |
+| Inspection | Hover + Trigger | Show SHAP tooltip |
+| Manipulation | Grip | Move and rotate visualization |
+| Scaling | Dual Grip | Resize visualization |
+| Navigation | Physical movement | Explore immersive environment |
+
+---
+
+## 🧪 Reproducibility Notes
+
+- Datasets are automatically loaded through scikit-learn APIs
+- No manual dataset installation is required
+- SHAP values are computed during execution
+- JSON messages generated by Python are consumed directly by Unity
+- Dependency versions are fixed in `requirements.txt`
+
+---
+
+## 📌 Citation
+
+If you use this repository in your research, please cite:
+
+Montilla-López, J., Valencia, D., Jiménez-Builes, J. A., and Ramírez-González, G. A.
+
 *ImmersiveSHAP: Immersive analytics visualization system for XAI using SHAP scatter plot.*
 
-Publication details will be updated after publication.
+Publication information will be updated after publication.
+
+---
+
+## 📬 Contact
+
+For questions regarding implementation or reproducibility, please contact the corresponding author.
