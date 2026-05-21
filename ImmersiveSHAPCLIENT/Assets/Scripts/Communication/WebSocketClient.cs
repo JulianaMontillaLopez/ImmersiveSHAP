@@ -27,7 +27,7 @@ public class WebSocketClient : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Update with your actual server IP
-        websocket = new WebSocket("ws://192.168.1.70:8765");
+        websocket = new WebSocket("ws://192.168.0.103:8765");
         //websocket = new WebSocket("ws://localhost:8765");
 
 

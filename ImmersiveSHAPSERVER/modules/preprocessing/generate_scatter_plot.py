@@ -244,9 +244,11 @@ def create(config, X, shap_values, y=None):
             x_quantiles=x_quantiles
         )
         data_dict["plot_path"] = output_path
-        data_dict["class_label"] = class_label
+        # Si es regresión (None), inyecta el nombre real de la variable objetivo continua.
+        data_dict["class_label"] = class_label if class_label is not None else str(target_name)
 
         return data_dict
+    
 
     except Exception as e:
         import traceback

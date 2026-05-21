@@ -1,0 +1,261 @@
+2026/01/15 21:19:20.047 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,SEND_REQ,4,867617
+2026/01/15 21:19:20.097 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,SEND_REQ,4,917899
+2026/01/15 21:19:20.211 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,RECV_NET,5,03129,113,3909
+2026/01/15 21:19:20.247 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,DESERIALIZE_INIT,35,2719
+2026/01/15 21:19:37.568 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,SEND_REQ,22,38856
+2026/01/15 21:21:20.282 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,RECV_NET,125,1023,102713,8
+2026/01/15 21:21:20.483 26611 26636 Info Unity [METRICS] CSV_DATA,UNITY,DESERIALIZE_PLOT,196,342
+2026/01/15 21:19:20.012 26611 26636 Info Unity ImmersiveSHAP, UNITY, [RendererController] Applying QUEST optimization
+2026/01/15 21:19:20.046 26611 26636 Info Unity ImmersiveSHAP, UNITY, [VisualMappingInitializer] ­ƒÄ« VisualMappingInterface inicializada, solicitando recursos...
+2026/01/15 21:19:20.047 26611 26636 Warn Unity ImmersiveSHAP, UNITY, [WebSocketClient] ÔÜá´©Å WebSocket no est├í conectado
+2026/01/15 21:19:20.097 26611 26636 Info Unity [ImmersiveSHAP, UNITY, WebSocketClient] Ô£à WebSocket abierto
+2026/01/15 21:19:20.098 26611 26636 Info Unity ImmersiveSHAP, UNITY, [WebSocketClient] ­ƒôñ Enviado a Python: {"action": "init_visualmappingui"}
+2026/01/15 21:19:20.211 26611 26636 Info Unity ImmersiveSHAP, UNITY, [WebSocketClient] ­ƒô® Mensaje recibido (1220 bytes)
+2026/01/15 21:19:20.211 26611 26636 Info Unity ImmersiveSHAP, UNITY, [DeserializationClient] ­ƒôÑ Procesando mensaje...
+2026/01/15 21:19:20.247 26611 26636 Info Unity ImmersiveSHAP, UNITY, [VisualMappingUIManager] ­ƒº® Populating dropdowns from InitPayload...
+2026/01/15 21:19:37.567 26611 26636 Info Unity ImmersiveSHAP, UNITY, [VisualMappingUIManager] ­ƒôñ Enviando configuraci├│n al servidor:
+2026/01/15 21:19:37.569 26611 26636 Info Unity ImmersiveSHAP, UNITY, [WebSocketClient] ­ƒôñ Enviado a Python: {"action":"generate_plot","dataset":"californiahousing","model":"xgboostRegressor","plot_type":"scatter","colormap":"cmap_red_blue","x_feature":"HouseAge","z_feature":"AveOccup","target":"MedHouseValue"}
+2026/01/15 21:21:20.285 26611 26636 Info Unity ImmersiveSHAP, UNITY, [WebSocketClient] ­ƒô® Mensaje recibido (1332677 bytes)
+2026/01/15 21:21:20.286 26611 26636 Info Unity ImmersiveSHAP, UNITY, [DeserializationClient] ­ƒôÑ Procesando mensaje...
+2026/01/15 21:21:20.483 26611 26636 Info Unity ImmersiveSHAP, UNITY, [DeserializationClient] ­ƒôè Datos listos: X(HouseAge) - 20640 puntos
+2026/01/15 21:21:20.483 26611 26636 Info Unity ImmersiveSHAP, UNITY, ­ƒôè [PlotManager] Rendering 20640 points.
+2026/01/15 21:21:20.488 26611 26636 Info Unity ImmersiveSHAP, UNITY, ­ƒº╣ SceneCleaner: escena limpiada v├¡a subm├│dulos.
+2026/01/15 21:21:20.489 26611 26636 Info Unity ImmersiveSHAP, UNITY, ­ƒôª DataInputManager: 20640 posiciones generadas.
+2026/01/15 21:21:20.496 26611 26636 Info Unity ImmersiveSHAP, UNITY, [DataScalerAndAligner] Scaler Original X:-0,05ÔÇô1,05 ÔåÆ Escalado [0,10]
+2026/01/15 21:21:22.127 26611 26636 Info Unity ImmersiveSHAP, UNITY, [GeometryBuilder] Instantiated 10000 points. Scale=0,500m per sphere
+2026/01/15 21:21:22.452 26611 26636 Info Unity ImmersiveSHAP, UNITY, [RendererController] Applying QUEST optimization
+2026/01/15 21:21:22.454 26611 26636 Info Unity ImmersiveSHAP, UNITY, [RendererController] Rendering enabled
+2026/01/15 21:21:22.455 26611 26636 Info Unity ImmersiveSHAP, UNITY, Ô£à [PlotManager] Render completed.
+2026/01/15 21:21:26.642 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:26.697 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:26.770 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.077 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.185 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.340 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.482 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.738 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:27.906 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.081 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.449 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.450 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.614 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.615 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.812 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:28.813 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.067 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.068 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.295 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.297 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.533 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.766 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.767 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:29.984 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:30.162 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:30.164 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:30.349 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:30.350 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:30.738 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:32.137 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:37.735 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:38.394 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:39.608 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:40.146 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:40.539 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:40.757 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:41.308 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:41.472 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:42.309 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:42.492 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:42.760 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.008 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.245 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.246 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.489 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.491 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.701 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.702 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.888 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:43.890 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.080 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.081 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.257 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.258 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.414 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.563 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.564 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.709 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.852 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.994 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:44.995 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:45.120 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:45.453 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:45.775 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:45.874 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:45.968 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.086 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.438 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.539 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.639 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.721 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.802 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.804 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.873 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:46.874 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.018 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.096 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.265 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.364 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.465 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:47.567 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.034 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.035 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.132 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.232 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.233 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.336 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.433 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.434 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.537 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.539 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.684 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.814 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.815 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:48.931 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.033 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.188 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.409 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.410 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.653 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.655 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.873 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:49.874 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:50.056 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:50.057 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:53.514 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:53.617 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:53.713 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:53.883 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:54.157 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:54.719 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:59.040 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:59.314 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:59.585 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:21:59.847 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:00.123 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:00.405 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:00.407 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:00.668 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:00.920 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:01.172 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:01.771 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:02.031 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:02.301 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:02.557 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:03.105 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:03.614 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:04.824 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:04.825 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:04.995 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:04.996 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:05.407 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:06.128 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:06.156 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:06.715 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:06.768 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:06.838 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:07.316 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:07.342 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:07.440 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:07.788 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:07.870 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:08.447 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:08.517 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:08.601 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:09.902 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:10.772 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:10.830 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:10.844 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:10.901 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:10.970 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:11.428 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:12.004 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:13.649 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:15.594 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:15.820 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:15.957 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.082 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.181 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.359 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.541 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.542 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.657 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.658 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:16.793 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:23.575 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:23.868 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:24.150 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:24.735 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:26.179 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:26.457 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:26.458 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:27.193 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:27.705 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:27.958 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:28.474 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:28.756 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:31.449 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:34.703 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.004 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.157 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.301 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.425 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.628 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:35.989 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:36.235 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:36.750 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:36.751 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:38.262 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:39.228 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:40.001 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:40.963 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:41.197 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:45.206 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:45.795 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:46.143 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:46.751 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:46.752 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:48.390 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:48.618 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:49.667 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:49.875 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:50.382 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:50.383 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:50.891 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:51.132 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:51.133 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:51.620 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:51.868 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:51.869 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:52.115 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Seleccionado: PointPrefab(Clone)
+2026/01/15 21:22:52.358 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:52.888 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:53.893 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:54.151 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:54.152 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:54.383 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:54.620 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:56.004 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:56.870 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:57.113 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:57.808 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:58.214 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:58.411 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:58.412 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:58.625 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:58.626 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:59.430 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:59.667 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:59.669 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:22:59.901 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:23:00.931 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
+2026/01/15 21:23:01.479 26611 26636 Info Unity ImmersiveSHAP, UNITY, [SelectionHighlighter] Hover sobre PointPrefab(Clone), seleccionado? False
