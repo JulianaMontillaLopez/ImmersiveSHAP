@@ -387,4 +387,4 @@ Publication information will be updated after publication.
 
 ## 📬 Contact
 
-For questions regarding implementation or reproducibility, please contact the corresponding author.
+For questions regarding implementation or reproducibility, please contact: julianamontillalo@unicauca.edu.co
